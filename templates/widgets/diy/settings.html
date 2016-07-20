@@ -1,0 +1,23 @@
+{% import '_includes/forms' as forms %}
+
+{{ forms.textField({
+    label: 'Title'|t,
+    id: 'title',
+    name: 'title',
+    value: settings.title,
+    required: true,
+    errors: settings.getErrors('title')
+}) }}
+
+{% if templateOptions %}
+    {{ forms.selectField({
+        label: 'Template'|t,
+        id: 'templatePath',
+        name: 'templatePath',
+        options: templateOptions,
+        value: settings.templatePath,
+        errors: settings.getErrors('templatePath'),
+    }) }}
+{% else %}
+    <p>{{ 'No templates are available.'|t }}</p>
+{% endif %}

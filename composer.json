@@ -1,0 +1,9 @@
+{
+  "name": "carlcs/craft-diywidget",
+  "description": "Do It Yourself widget for Craft CMS",
+  "type": "craft-plugin",
+  "require": {
+    "composer/installers": "~1.0",
+    "php": ">=5.4.0"
+  }
+}
