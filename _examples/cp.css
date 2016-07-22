@@ -1,0 +1,45 @@
+/**
+ * Weekday Bear
+ */
+
+.placebear {
+  max-width: 100%;
+}
+
+/**
+ * Countdown
+ */
+
+.countdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 70px;
+}
+
+.countdown__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.countdown__item {
+  padding: 0 8px 10px 8px;
+  text-align: center;
+}
+
+.countdown__value,
+.countdown__label {
+  display: block;
+}
+
+.countdown__value {
+  font-size: 52px;
+  line-height: 1.1;
+}

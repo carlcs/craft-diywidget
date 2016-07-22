@@ -1,0 +1,21 @@
+{% set assets = craft.assets({
+    limit: 10,
+    kind: 'image',
+}) %}
+
+{% if assets|length %}
+    <table class="data fullwidth">
+        {% for asset in assets %}
+            <tr>
+                <td>
+                    <a href="{{ asset.getUrl() }}">{{ asset.filename }}</a>
+                    <span class="light">
+                        {{ asset.dateCreated.uiTimestamp() }}
+                    </span>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>{{ 'No assets exist yet.'|t }}</p>
+{% endif %}
