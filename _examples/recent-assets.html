@@ -1,6 +1,7 @@
 {% set assets = craft.assets({
     limit: 10,
     kind: 'image',
+    order: 'dateCreated desc',
 }) %}
 
 {% if assets|length %}
