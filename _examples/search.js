@@ -14,6 +14,7 @@ Craft.DiyWidget.Search = Garnish.Base.extend(
   $widget: null,
   $search: null,
   $clearSearchBtn: null,
+  $spinner: null,
   $results: null,
 
   init: function(settings)
@@ -23,6 +24,7 @@ Craft.DiyWidget.Search = Garnish.Base.extend(
     this.$widget = $('#widget'+settings.widgetId);
     this.$search = this.$widget.find('.search input');
     this.$clearSearchBtn = this.$widget.find('.search .clear');
+    this.$spinner = this.$widget.find('.spinner');
     this.$results = this.$widget.find('.search-results');
 
     // Automatically update the elements after new search text has been sitting for a 1/2 second
@@ -74,12 +76,16 @@ Craft.DiyWidget.Search = Garnish.Base.extend(
 
   updateSearchResults: function()
   {
+    this.$spinner.removeClass('hidden');
+
     var data = {
       query: this.$search.val(),
       templatePath: this.settings.templatePath,
     };
 
     Craft.postActionRequest('diyWidget/getHtml', data, $.proxy(function(response, textStatus) {
+      this.$spinner.addClass('hidden');
+
       if (textStatus == 'success') {
         this.$results.html(response.html);
       } else {

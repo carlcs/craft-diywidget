@@ -10,6 +10,12 @@
  * Search
  */
 
+.search-bar .spinner {
+  position: absolute;
+  top: 0;
+  right: -24px;
+}
+
 .search-results table {
   margin-top: 10px;
 }
