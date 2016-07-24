@@ -1,0 +1,16 @@
+<div class="texticon search icon clearable">
+    <input class="text fullwidth" type="text" name="query" autocomplete="off" placeholder="Search">
+    <div class="clear hidden" title="Clear"></div>
+</div>
+
+<div class="search-results">
+</div>
+
+{% set jsSettings = {
+    widgetId: widget.id,
+    templatePath: '_search-results.html',
+} %}
+
+{% includejs %}
+    new Craft.DiyWidget.Search({{ jsSettings|json_encode|raw }});
+{% endincludejs %}
