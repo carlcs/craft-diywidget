@@ -1,5 +1,13 @@
 [
   {
+    "version": "1.2.1",
+    "downloadUrl": "https://github.com/carlcs/craft-diywidget/archive/v1.2.1.zip",
+    "date": "2016-07-24T20:00:00+01:00",
+    "notes": [
+      "[Added] Added plugin and widget icons."
+    ]
+  },
+  {
     "version": "1.2.0",
     "downloadUrl": "https://github.com/carlcs/craft-diywidget/archive/v1.2.0.zip",
     "date": "2016-07-24T17:00:00+01:00",
