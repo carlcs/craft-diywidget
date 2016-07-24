@@ -1,6 +1,8 @@
 (function($) {
 
-Craft.DiyWidget = {};
+if (Craft.DiyWidget === undefined) {
+  Craft.DiyWidget = {};
+}
 
 Craft.DiyWidget.Countdown = Garnish.Base.extend(
 {

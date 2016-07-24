@@ -1,7 +1,8 @@
 (function($) {
 
-// TODO: setup DiyWidget object in the plugin itself!
-// Craft.DiyWidget = {};
+if (Craft.DiyWidget === undefined) {
+  Craft.DiyWidget = {};
+}
 
 Craft.DiyWidget.Search = Garnish.Base.extend(
 {
