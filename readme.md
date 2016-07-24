@@ -14,7 +14,7 @@ $ composer require carlcs/craft-diywidget
 
 It is super easy to build you own widgets using this plugin. All you need to do is to create a folder craft/config/diywidget/ and add Twig templates to it.
 
-These Twig templates will now be available for use in Do It Yourself widgets on your dashboard. If you need custom CSS or some Javascript, just upload it into that folder as well and they will be included automatically.
+These templates will now be available for use in Do It Yourself widgets on your dashboard. If you need custom CSS or some Javascript, just upload it into that folder as well and they will be included automatically.
 
 If you don’t feel like crafting, just have a play with the [example template files][1]  provided with the plugin.
 
