@@ -1,5 +1,15 @@
 [
   {
+    "version": "1.1.0",
+    "downloadUrl": "https://github.com/carlcs/craft-diywidget/archive/v1.1.0.zip",
+    "date": "2016-07-24T02:00:00+01:00",
+    "notes": [
+      "[Added] Added a new “Entry Search” example widget.",
+      "[Added] Added a `getHtml` controller action to request the templates using Ajax.",
+      "[Improved] Templates starting with an underscore are no longer listed in the widget settings."
+    ]
+  },
+  {
     "version": "1.0.0",
     "downloadUrl": "https://github.com/carlcs/craft-diywidget/archive/v1.0.0.zip",
     "date": "2016-07-22T19:00:00+01:00",
