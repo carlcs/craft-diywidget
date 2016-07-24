@@ -61,10 +61,12 @@ class DiyWidgetWidget extends BaseWidget
         $templateOptions = [];
 
         foreach (craft()->diyWidget->templatePaths as $templatePath) {
-            $filename = explode('.', $templatePath)[0];
-            $name = $this->titleize($filename);
+            if (substr($templatePath, 0, 1) !== '_') {
+                $filename = explode('.', $templatePath)[0];
+                $name = $this->titleize($filename);
 
-            $templateOptions[] = ['label' => Craft::t($name), 'value' => $templatePath];
+                $templateOptions[] = ['label' => Craft::t($name), 'value' => $templatePath];
+            }
         }
 
         return craft()->templates->render('diywidget/widgets/diy/settings', [
