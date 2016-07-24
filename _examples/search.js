@@ -20,7 +20,7 @@ Craft.DiyWidget.Search = Garnish.Base.extend(
   {
     this.setSettings(settings);
 
-    this.$widget = $('#'+settings.widgetId);
+    this.$widget = $('#widget'+settings.widgetId);
     this.$search = this.$widget.find('.search input');
     this.$clearSearchBtn = this.$widget.find('.search .clear');
     this.$results = this.$widget.find('.search-results');

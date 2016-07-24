@@ -40,7 +40,7 @@ class DiyWidgetWidget extends BaseWidget
 
         if (!empty($templatePath)) {
             $widget = [
-                'id' => 'widget'.$this->model->id,
+                'id' => $this->model->id,
                 'title' => Craft::t($settings->title),
                 'templatePath' => $templatePath,
             ];

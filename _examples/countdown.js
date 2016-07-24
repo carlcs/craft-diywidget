@@ -8,7 +8,7 @@ Craft.DiyWidget.Countdown = Garnish.Base.extend(
 {
   init: function(settings)
   {
-    this.$counter = $('#'+settings.widgetId+' .countdown');
+    this.$counter = $('#widget'+settings.widgetId+' .countdown');
 
     this.$days = this.$counter.find('.days');
     this.$hours = this.$counter.find('.hours');
