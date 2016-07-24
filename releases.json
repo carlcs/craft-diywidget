@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.2.0",
+    "downloadUrl": "https://github.com/carlcs/craft-diywidget/archive/v1.2.0.zip",
+    "date": "2016-07-24T17:00:00+01:00",
+    "notes": [
+      "[Added] Added a very basic “Welcome” example widget.",
+      "[Improved] Made some UI improvements to the “Search” example widget, a spinner is now shown while results are loading.",
+      "[Fixed] The “Recent Assets” example widget now really shows the latest assets.",
+      "[Fixed] The widget’s ID passed in to the templates doesn’t contain the word `widget` any longer.",
+      "[Fixed] The `Craft.DiyWidget` object is now only created in the example Javascripts if it doesn’t already exist."
+    ]
+  },
+  {
     "version": "1.1.0",
     "downloadUrl": "https://github.com/carlcs/craft-diywidget/archive/v1.1.0.zip",
     "date": "2016-07-24T02:00:00+01:00",
