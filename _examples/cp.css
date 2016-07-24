@@ -16,13 +16,14 @@
 
 .search-results table td {
   border-top: 0px !important;
+  position: relative;
+  padding-left: 27px;
 }
 
 .search-results table td .status {
-  position: relative;
-  top: 1px;
+  position: absolute;
+  top: calc(50% - 5px);
   left: 9px;
-  margin-right: 14px;
 }
 
 /**
