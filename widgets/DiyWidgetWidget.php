@@ -29,6 +29,16 @@ class DiyWidgetWidget extends BaseWidget
     }
 
     /**
+     * Returns the path to the widget's SVG icon.
+     *
+     * @return string
+     */
+    public function getIconPath()
+    {
+        return craft()->path->getPluginsPath().'diywidget/resources/icon.svg';
+    }
+
+    /**
      * Returns the widget's body HTML.
      *
      * @return string|null
