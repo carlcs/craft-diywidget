@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.1 - 2018-05-29
+
+### Changed
+- The plugin now removes all DIY widgets that were installed under Craft 2 from the dashboards when it gets installed.
+
 ## 2.0.0 - 2018-05-29
 
 ### Added
