@@ -1,0 +1,22 @@
+namespace carlcs\diywidget\widgets;
+
+use carlcs\diywidget\base\BaseWidget;
+use Craft;
+
+class {$className} extends BaseWidget
+{
+    public static function displayName(): string
+    {
+        return "{$displayName}";
+    }
+
+    public static function iconPath()
+    {
+        return "{$iconPath}" ?: null;
+    }
+
+    public static function templatePath()
+    {
+        return "{$templatePath}";
+    }
+}
