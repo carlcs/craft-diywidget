@@ -13,12 +13,13 @@ Do It Yourself widget is available in the Plugin Store. You can also install the
 
 ## Getting Started
 
-To get started simply create a new folder called `diy-widget` inside of your config folder.
+It is super easy to build you own widgets using this plugin. All you need to do is to create a new folder called `diy-widget` inside of your config folder and add Twig templates to it.
+
 You can create new widgets using Twig/HTML, by creating a `widgetname.html` file.
 
-To add CSS or JS simply create a `widgetname.css` or `widgetname.js` file.
+These templates will now be available to add to your dashboard. If you need custom CSS or some Javascript, just upload it into that folder as well and they will be included automatically. Simply create a `widgetname.css` or `widgetname.js` file.
 
-You can look at the examples provided in the `_examples/diy-widget` folder. Simply copy the examples into your `diy-widget` folder and you'll be able to select and add them to your dashboard.
+If you don’t feel like crafting, just have a play with the example template files provided with the plugin.
 
 ## License
 
