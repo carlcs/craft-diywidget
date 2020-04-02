@@ -5,6 +5,9 @@
 ### Changed
 - Updated example widget styles for Craft 3.4
 
+### Fixed
+- Fixed a bug where widget icons didn’t display in Craft 3.2 or later.
+
 ## 2.0.1 - 2018-05-29
 
 ### Changed
