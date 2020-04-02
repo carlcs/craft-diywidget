@@ -1,11 +1,11 @@
-{% set assets = craft.assets({
-    limit: 10,
-    kind: 'image',
-    orderBy: 'elements.dateCreated desc',
-}).all() %}
+{% set assets = craft.assets()
+    .kind('image')
+    .orderBy('elements.dateCreated desc')
+    .limit(10)
+    .all() %}
 
 {% if assets|length %}
-    <table class="data fullwidth">
+    <table class="fullwidth">
         {% for asset in assets %}
             <tr>
                 <td>

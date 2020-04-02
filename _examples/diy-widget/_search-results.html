@@ -1,19 +1,18 @@
 {% set query = craft.app.request.getParam('query') %}
 
 {% if query %}
-    {% set entries = craft.entries({
-        search: {
+    {% set entries = craft.entries()
+        .search({
             query: query,
             subLeft: false,
             subRight: true,
-        },
-        status: null,
-        orderBy: null,
-        limit: 10,
-    }).all() %}
+        })
+        .anyStatus()
+        .limit(10)
+        .all() %}
 
     {% if entries|length %}
-        <table class="data fullwidth">
+        <table class="fullwidth">
             {% for entry in entries %}
                 <tr>
                     <td>

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleaased
+
+### Changed
+- Updated example widget styles for Craft 3.4
+
 ## 2.0.1 - 2018-05-29
 
 ### Changed
