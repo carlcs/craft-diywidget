@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleaased
+## 2.0.2 - 2020-04-02
 
 ### Changed
 - Updated example widget styles for Craft 3.4
