@@ -30,8 +30,7 @@ class Widgets extends Component
     // =========================================================================
 
     /**
-     * Returns config arrays for all widgets they have uploaded and registers
-     * associated assets.
+     * Returns config arrays for all widgets.
      *
      * @return array
      */
