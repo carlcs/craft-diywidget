@@ -39,7 +39,7 @@ class Plugin extends \craft\base\Plugin
             Craft::$app->getView()->registerAssetBundle(WidgetsAsset::class);
 
             foreach ($widgets = $this->getWidgets()->getAllWidgets() as $widget) {
-                $this->includeWidget($widget);
+                $this->_includeWidget($widget);
             }
         }
 
@@ -60,7 +60,7 @@ class Plugin extends \craft\base\Plugin
         return $this->get('widgets');
     }
 
-    // Protected Methods
+    // Private Methods
     // =========================================================================
 
     /**
@@ -70,7 +70,7 @@ class Plugin extends \craft\base\Plugin
      * @param array $widget
      * @see \carlcs\diywidget\services\Widgets::getAllWidgets()
      */
-    protected function includeWidget(array $widget)
+    private function _includeWidget(array $widget)
     {
         $code = file_get_contents(__DIR__.'/widgets/diywidget.stub');
 
