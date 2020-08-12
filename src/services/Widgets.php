@@ -4,8 +4,8 @@ namespace carlcs\diywidget\services;
 
 use Craft;
 use craft\base\Component;
-use craft\helpers\Assets;
 use craft\helpers\FileHelper;
+use craft\helpers\StringHelper;
 
 /**
  * @property array $allWidgets
@@ -41,38 +41,31 @@ class Widgets extends Component
         }
 
         $this->_widgets = [];
-        $basePath = Craft::getAlias('@config/diy-widget/');
+        $basePath = Craft::getAlias('@config/diy-widget');
 
         if (!is_dir($basePath)) {
             return $this->_widgets;
         }
 
-        foreach ($this->findTemplates($basePath) as $absoluteTemplatePath) {
-            $templatePath = substr($absoluteTemplatePath, strlen($basePath));
-
+        foreach ($this->findTemplates($basePath) as $path) {
             // Let’s sanitize the template path right away
-            $templatePath = preg_replace('/[\"\'\)\(]/', '', $templatePath);
+            $path = preg_replace('/[\"\')(]/', '', $path);
 
-            $filename = pathinfo($templatePath, PATHINFO_FILENAME);
-            $dirname = pathinfo($templatePath, PATHINFO_DIRNAME);
-            $pathNoExt = ($dirname && $dirname !== '.' ? $dirname.DIRECTORY_SEPARATOR : '') . $filename;
+            $relativePath = substr($path, strlen($basePath) + 1);
 
-            $filenameWords = Assets::filename2Title($filename);
-            $className = preg_replace('/[^A-Za-z]/', '', $filenameWords);
+            $filename = pathinfo($path, PATHINFO_FILENAME);
+            $title = StringHelper::toTitleCase(implode(' ', StringHelper::toWords($filename, false, true)));
+            $className = str_replace(' ', '', $title);
 
-            $displayName = Craft::t('site', $filenameWords);
+            $iconPath = pathinfo($path, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($path, PATHINFO_FILENAME) . '.svg';
+            $iconPath = file_exists($iconPath) ? $iconPath : null;
 
-            $iconPath = null;
-            if (file_exists("{$basePath}{$pathNoExt}.svg")) {
-                $iconPath = "{$basePath}{$pathNoExt}.svg";
-            }
-
-            $this->_widgets[] = compact(
-                'className',
-                'displayName',
-                'templatePath',
-                'iconPath'
-            );
+            $this->_widgets[] = [
+                'className' => $className,
+                'displayName' => Craft::t('site', $title),
+                'templatePath' => $relativePath,
+                'iconPath' => $iconPath,
+            ];
         }
 
         return $this->_widgets;
