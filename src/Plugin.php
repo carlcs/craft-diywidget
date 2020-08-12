@@ -6,6 +6,7 @@ use carlcs\diywidget\assets\WidgetsAsset;
 use carlcs\diywidget\services\Widgets;
 use Craft;
 use craft\events\RegisterComponentTypesEvent;
+use craft\helpers\FileHelper;
 use craft\services\Dashboard;
 use yii\base\Event;
 
@@ -37,6 +38,7 @@ class Plugin extends \craft\base\Plugin
 
         if (Craft::$app->getRequest()->getIsCpRequest()) {
             Craft::$app->getView()->registerAssetBundle(WidgetsAsset::class);
+            $this->_registerTemplateHooks();
 
             foreach ($widgets = $this->getWidgets()->getAllWidgets() as $widget) {
                 $this->_includeWidget($widget);
@@ -82,5 +84,24 @@ class Plugin extends \craft\base\Plugin
         ]);
 
         eval($code);
+    }
+
+    /**
+     * Registers template hooks.
+     */
+    private function _registerTemplateHooks()
+    {
+        $paths = FileHelper::findFiles(Craft::getAlias('@config/diy-widget'), [
+            'only' => ['*.php'],
+        ]);
+
+        foreach ($paths as $path) {
+            $hook = include($path);
+            if (is_callable($hook)) {
+                Craft::$app->view->hook('diy.' . pathinfo($path, PATHINFO_FILENAME), function(array &$context) use ($hook) {
+                    return $hook($context);
+                });
+            }
+        }
     }
 }
