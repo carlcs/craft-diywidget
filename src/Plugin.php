@@ -2,6 +2,7 @@
 
 namespace carlcs\diywidget;
 
+use carlcs\diywidget\assets\WidgetsAsset;
 use carlcs\diywidget\services\Widgets;
 use Craft;
 use craft\events\RegisterComponentTypesEvent;
@@ -35,6 +36,8 @@ class Plugin extends \craft\base\Plugin
         $this->set('widgets', Widgets::class);
 
         if (Craft::$app->getRequest()->getIsCpRequest()) {
+            Craft::$app->getView()->registerAssetBundle(WidgetsAsset::class);
+
             foreach ($widgets = $this->getWidgets()->getAllWidgets() as $widget) {
                 $this->includeWidget($widget);
             }

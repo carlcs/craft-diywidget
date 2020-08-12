@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- All JavaScript and CSS files found in `config/diy-widget` are now loaded for CP requests, not just the ones matching template filenames.
+
 ## 2.0.2 - 2020-04-02
 
 ### Changed

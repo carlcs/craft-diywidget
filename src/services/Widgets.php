@@ -6,7 +6,6 @@ use Craft;
 use craft\base\Component;
 use craft\helpers\Assets;
 use craft\helpers\FileHelper;
-use craft\web\assets\cp\CpAsset;
 
 /**
  * @property array $allWidgets
@@ -49,9 +48,6 @@ class Widgets extends Component
             return $this->_widgets;
         }
 
-        // Publish the complete widgets folder
-        $baseUrl = Craft::$app->getAssetManager()->getPublishedUrl($basePath, true);
-
         foreach ($this->findTemplates($basePath) as $absoluteTemplatePath) {
             $templatePath = substr($absoluteTemplatePath, strlen($basePath));
 
@@ -70,18 +66,6 @@ class Widgets extends Component
             $iconPath = null;
             if (file_exists("{$basePath}{$pathNoExt}.svg")) {
                 $iconPath = "{$basePath}{$pathNoExt}.svg";
-            }
-
-            $view = Craft::$app->getView();
-
-            if (file_exists("{$basePath}{$pathNoExt}.js")) {
-                $view->registerJsFile("{$baseUrl}/{$pathNoExt}.js", [
-                    'depends' => CpAsset::class
-                ]);
-            }
-
-            if (file_exists("{$basePath}{$pathNoExt}.css")) {
-                $view->registerCssFile("{$baseUrl}/{$pathNoExt}.css");
             }
 
             $this->_widgets[] = compact(
