@@ -1,0 +1,22 @@
+{% set stats = [
+    { title: 'All Users', link: 'users', criteria: { group: null, status: null }, elementType: 'users' },
+    { title: 'Active Users', link: 'users', criteria: { group: null, status: 'active' }, elementType: 'users' },
+    { title: 'Pending Users', link: 'users', criteria: { group: null, status: 'pending' }, elementType: 'users' },
+    { title: 'Suspended Users', link: 'users', criteria: { group: null, status: 'suspended' }, elementType: 'users' },
+] %}
+
+<div class="diy-elementstats">
+    <div class="diy-elementstats__list">
+        {% for stat in stats %}
+            {% set elementType = stat.elementType ?? 'entries' %}
+            {% set query = attribute(craft, elementType, [stat.criteria]) %}
+
+            <div class="diy-elementstats__item">
+                <a class="diy-elementstats__link" href="{{ cpUrl(stat.link) }}">
+                    <span class="diy-elementstats__value">{{ query.count() }}</span>
+                    <span class="diy-elementstats__label">{{ stat.title|t('diy-widget') }}</span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
