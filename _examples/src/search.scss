@@ -9,19 +9,18 @@
 
     &__results {
         table {
-            margin-top: 7px;
+            margin-top: 15px;
         }
 
         table td {
-            border-top: 0px !important;
             position: relative;
-            padding-left: 27px;
+            padding-left: 17px;
         }
 
         table td .status {
             position: absolute;
+            left: 0;
             top: calc(50% - 5px);
-            left: 9px;
         }
     }
 }
