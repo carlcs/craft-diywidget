@@ -1,0 +1,23 @@
+{% set users = craft.users()
+    .anyStatus()
+    .orderBy('elements.dateCreated desc')
+    .limit(10)
+    .all() %}
+
+{% if users|length %}
+    <table class="diy-elementlist diy-elementlist--status fullwidth">
+        {% for user in users %}
+            <tr>
+                <td>
+                    <span class="status {{ user.getStatus() }}"></span>
+                    <a href="{{ user.getCpEditUrl() }}">{{ user.email }}</a>
+                    <span class="light">
+                        {{ user.dateCreated|timestamp('short') }}
+                    </span>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>{{ 'No users exist yet.'|t('site') }}</p>
+{% endif %}

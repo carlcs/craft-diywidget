@@ -1,0 +1,28 @@
+{% set drafts = craft.entries()
+    .siteId(null)
+    .sectionId(null)
+    .drafts(true)
+    .anyStatus()
+    .orderBy('elements.dateUpdated desc')
+    .limit(10)
+    .all() %}
+
+{% if drafts|length %}
+    <table class="fullwidth">
+        {% for draft in drafts %}
+            <tr>
+                <td>
+                    <a href="{{ url(draft.getCpEditUrl(), { draftId: draft.draftId }) }}">
+                        {{ draft.title ?: 'untitled'|t('site') }}
+                    </a>
+                    <span class="light">
+                        {{ draft.dateCreated|timestamp('short') }}
+                        {%- if CraftEdition == CraftPro and draft.creator %}, {{ draft.creator.username }}{% endif -%}
+                    </span>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>{{ 'No entry drafts exist yet.'|t('site') }}</p>
+{% endif %}

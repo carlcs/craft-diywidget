@@ -3,7 +3,7 @@
 ## Unreleased
 
 ### Added
-- Added a “Entries Count” and a ”Users Count” example widget.
+- Added some new example widgets: “Entries Count”, ”Users Count”, “Recent Drafts”, “Recent Entry Updates” and “Recent Users”.
 - The “Recent Assets” example widget now shows the uploader’s username.
 - It’s now possible to register template hooks by uploading PHP files to `config/diy-widget`. ([#9](https://github.com/carlcs/craft-diywidget/issues/9))
 

@@ -1,0 +1,14 @@
+.diy-elementlist {
+    &.diy-elementlist--status {
+        td {
+            position: relative;
+            padding-left: 17px;
+        }
+
+        td .status {
+            position: absolute;
+            left: 0;
+            top: calc(50% - 5px);
+        }
+    }
+}
