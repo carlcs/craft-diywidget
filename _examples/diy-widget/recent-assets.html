@@ -1,5 +1,6 @@
 {% set assets = craft.assets()
-    .kind('image')
+    .kind(null)
+    .with(['uploader'])
     .orderBy('elements.dateCreated desc')
     .limit(10)
     .all() %}
@@ -12,6 +13,7 @@
                     <a href="{{ asset.getUrl() }}">{{ asset.filename }}</a>
                     <span class="light">
                         {{ asset.dateCreated|timestamp('short') }}
+                        {%- if CraftEdition == CraftPro and asset.uploader %}, {{ asset.uploader.username }}{% endif -%}
                     </span>
                 </td>
             </tr>
