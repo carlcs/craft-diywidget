@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.1.0 - 2021-03-08
 
 ### Added
 - Added some new example widgets: “Entries Count”, ”Users Count”, “Recent Drafts”, “Recent Entry Updates” and “Recent Users”.
