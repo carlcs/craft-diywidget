@@ -1,11 +1,11 @@
 {% set entries = craft.entries()
     .siteId(null)
     .sectionId(null)
-    .anyStatus()
+    .status(null)
     .with(['author'])
     .orderBy('elements.dateUpdated desc')
     .limit(10)
-    .all() %}
+    .collect() %}
 
 {% if entries|length %}
     <table class="fullwidth">
@@ -22,5 +22,5 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>{{ 'No entries exist yet.'|t('site') }}</p>
+    <p class="zilch small">{{ 'No entries exist yet.'|t('site') }}</p>
 {% endif %}

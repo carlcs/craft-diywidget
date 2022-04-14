@@ -1,5 +1,3 @@
-{% set folderPath = craft.app.assetmanager.getPublishedUrl('@config/diy-widget') %}
+{% set url = craft.app.assetmanager.getPublishedUrl('@config/diy-widget', true, 'uploads/DSC_6489.jpg') %}
 
-<div class="diy-ratio diy-ratio-2/3">
-    <img src="{{ folderPath }}/uploads/DSC_6489.jpg" alt="">
-</div>
+<img src="{{ url }}" width="2000" height="3000" alt="">

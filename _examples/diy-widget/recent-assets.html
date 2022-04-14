@@ -3,7 +3,7 @@
     .with(['uploader'])
     .orderBy('elements.dateCreated desc')
     .limit(10)
-    .all() %}
+    .collect() %}
 
 {% if assets|length %}
     <table class="fullwidth">
@@ -20,5 +20,5 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>{{ 'No assets exist yet.'|t('site') }}</p>
+    <p class="zilch small">{{ 'No assets exist yet.'|t('site') }}</p>
 {% endif %}

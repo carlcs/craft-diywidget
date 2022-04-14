@@ -2,14 +2,10 @@
 
 {% if query %}
     {% set entries = craft.entries()
-        .search({
-            query: query,
-            subLeft: false,
-            subRight: true,
-        })
-        .anyStatus()
+        .search(query)
+        .status(null)
         .limit(10)
-        .all() %}
+        .collect() %}
 
     {% if entries|length %}
         <table class="fullwidth">

@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.0 - 2022-04-14
+
+### Added
+- Added Craft 4 compatibility.
+
+### Changed
+- Removed build tools for example widgets’ styles and scripts.
+- Updated example widget styles for Craft 4.
+
 ## 2.1.0 - 2021-03-08
 
 ### Added
@@ -14,7 +23,7 @@
 ## 2.0.2 - 2020-04-02
 
 ### Changed
-- Updated example widget styles for Craft 3.4
+- Updated example widget styles for Craft 3.4.
 
 ### Fixed
 - Fixed a bug where widget icons didn’t display in Craft 3.2 or later.

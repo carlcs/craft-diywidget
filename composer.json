@@ -1,7 +1,7 @@
 {
   "name": "carlcs/craft-diywidget",
   "description": "Do It Yourself widget for Craft CMS",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "type": "craft-plugin",
   "keywords": [
     "diy",
@@ -18,11 +18,10 @@
   "support": {
     "issues": "https://github.com/carlcs/craft-diywidget/issues?state=open",
     "source": "https://github.com/carlcs/craft-diywidget",
-    "docs": "https://github.com/carlcs/craft-diywidget",
-    "rss": "https://github.com/carlcs/craft-diywidget/commits/v2.atom"
+    "docs": "https://github.com/carlcs/craft-diywidget"
   },
   "require": {
-    "craftcms/cms": "^3.0.0"
+    "craftcms/cms": "^4.0.0-beta.1"
   },
   "autoload": {
     "psr-4": {
@@ -31,8 +30,6 @@
   },
   "extra": {
     "name": "Do It Yourself widget",
-    "handle": "diy-widget",
-    "changelogUrl": "https://github.com/carlcs/craft-diywidget/raw/v2/CHANGELOG.md",
-    "downloadUrl": "https://github.com/carlcs/craft-diywidget/archive/v2.zip"
+    "handle": "diy-widget"
   }
 }

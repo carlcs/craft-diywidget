@@ -1,6 +1,5 @@
 {% set width = 800 + now|date('N') %}
 {% set height = (width * 0.667)|round %}
+{% set url = "https://placebear.com/g/#{width}/#{height}" %}
 
-<div class="diy-ratio diy-ratio-3/2">
-    <img src="https://placebear.com/g/{{ width }}/{{ height }}">
-</div>
+<img src="{{ url }}" width="{{ width }}" height="{{ height }}" alt="">

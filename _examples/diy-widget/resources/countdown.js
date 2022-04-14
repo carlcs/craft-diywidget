@@ -1,1 +1,52 @@
-!function(t){var e={};function i(n){if(e[n])return e[n].exports;var o=e[n]={i:n,l:!1,exports:{}};return t[n].call(o.exports,o,o.exports,i),o.l=!0,o.exports}i.m=t,i.c=e,i.d=function(t,e,n){i.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:n})},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="/",i(i.s=0)}([function(t,e,i){i(1),i(2),i(3),i(4),t.exports=i(5)},function(t,e){var i;i=jQuery,void 0===Craft.DiyWidget&&(Craft.DiyWidget={}),Craft.DiyWidget.Countdown=Garnish.Base.extend({init:function(t){this.$counter=i("#widget"+t.widgetId+" .diy-countdown"),this.$days=this.$counter.find(".days"),this.$hours=this.$counter.find(".hours"),this.$minutes=this.$counter.find(".minutes"),this.$seconds=this.$counter.find(".seconds"),this.endTime=new Date(Date.now()+1e3*t.timeRemaining),this.endHtml=t.endHtml,this.initializeClock()},initializeClock:function(){this.$counter.removeClass("hidden"),this.updateClock(),this.timer=setInterval(this.updateClock.bind(this),1e3)},updateClock:function(){var t=this.getTimeRemaining(this.endTime);t.total<1e3?(clearInterval(this.timer),this.$counter.html(this.endHtml)):(this.$days.html(("0"+t.days).slice(-2)),this.$hours.html(("0"+t.hours).slice(-2)),this.$minutes.html(("0"+t.minutes).slice(-2)),this.$seconds.html(("0"+t.seconds).slice(-2)))},getTimeRemaining:function(t){var e=t.getTime()-Date.now();return{total:e,seconds:Math.floor(e/1e3%60),minutes:Math.floor(e/1e3/60%60),hours:Math.floor(e/36e5%24),days:Math.floor(e/864e5)}}})},function(t,e){},function(t,e){},function(t,e){},function(t,e){}]);
+Craft.DiyWidget = Craft.DiyWidget || {};
+
+Craft.DiyWidget.Countdown = class {
+    constructor(settings) {
+        this.countdown = document.querySelector(`#widget${settings.widgetId} .diy-countdown`);
+        this.days = this.countdown.querySelector('.days');
+        this.hours = this.countdown.querySelector('.hours');
+        this.minutes = this.countdown.querySelector('.minutes');
+        this.seconds = this.countdown.querySelector('.seconds');
+
+        this.endTime = new Date(Date.now() + settings.timeRemaining * 1000);
+        this.endHtml = settings.endHtml;
+
+        this.updateCountdown();
+        this.timer = setInterval(this.updateCountdown.bind(this), 1000);
+    }
+
+    updateCountdown() {
+        const time = this.getTimeRemaining(this.endTime);
+        const isOver = Object.values(time).every((value) => value === 0);
+
+        if (isOver) {
+            this.countdown.innerHTML = this.endHtml;
+            clearInterval(this.timer);
+        } else {
+            Object.keys(time).forEach((name) => {
+                const el = this[name];
+                const value = ('0' + time[name]).slice(-2);
+                el.querySelector('.diy-countdown__value').innerHTML = value;
+
+                if (
+                    (name == 'days' && time.days === 0) ||
+                    (name == 'seconds' && time.days !== 0)
+                ) {
+                    el.classList.add('hidden');
+                } else {
+                    el.classList.remove('hidden');
+                }
+            });
+        }
+    }
+
+    getTimeRemaining(endDate) {
+        const t = endDate.getTime() - Date.now();
+        return {
+            seconds: Math.floor((t / 1000) % 60),
+            minutes: Math.floor((t / 1000 / 60) % 60),
+            hours: Math.floor((t / (1000 * 60 * 60)) % 24),
+            days: Math.floor(t / (1000 * 60 * 60 * 24)),
+        };
+    }
+};

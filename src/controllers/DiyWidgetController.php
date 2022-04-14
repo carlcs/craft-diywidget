@@ -9,11 +9,6 @@ use yii\web\Response;
 
 class DiyWidgetController extends Controller
 {
-    /**
-     * Returns the widget body HTML.
-     *
-     * @return Response
-     */
     public function actionGetHtml(): Response
     {
         $this->requireLogin();

@@ -2,10 +2,10 @@
     .siteId(null)
     .sectionId(null)
     .drafts(true)
-    .anyStatus()
+    .status(null)
     .orderBy('elements.dateUpdated desc')
     .limit(10)
-    .all() %}
+    .collect() %}
 
 {% if drafts|length %}
     <table class="fullwidth">
@@ -24,5 +24,5 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>{{ 'No entry drafts exist yet.'|t('site') }}</p>
+    <p class="zilch small">{{ 'No entry drafts exist yet.'|t('site') }}</p>
 {% endif %}

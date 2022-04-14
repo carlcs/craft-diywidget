@@ -13,17 +13,11 @@ class BaseWidget extends Widget
     // Static
     // =========================================================================
 
-    /**
-     * @return string|null
-     */
-    public static function templatePath()
+    public static function templatePath(): ?string
     {
         return null;
     }
 
-    /**
-     * @inheritDoc
-     */
     protected static function allowMultipleInstances(): bool
     {
         return false;
@@ -32,12 +26,7 @@ class BaseWidget extends Widget
     // Public Methods
     // =========================================================================
 
-    /**
-     * Returns the widget's body HTML.
-     *
-     * @return string
-     */
-    public function getBodyHtml(): string
+    public function getBodyHtml(): ?string
     {
         $widget = [
             'id' => $this->id,

@@ -6,6 +6,7 @@ use Craft;
 use craft\base\Component;
 use craft\helpers\FileHelper;
 use craft\helpers\StringHelper;
+use Exception;
 
 /**
  * @property array $allWidgets
@@ -16,24 +17,12 @@ class Widgets extends Component
     // Properties
     // =========================================================================
 
-    /**
-     * @var array|null
-     */
-    private $_widgets;
-
-    /**
-     * @var array|null
-     */
-    private $_globalSets;
+    private ?array $_widgets = null;
+    private ?array $_globalSets = null;
 
     // Public Methods
     // =========================================================================
 
-    /**
-     * Returns config arrays for all widgets.
-     *
-     * @return array
-     */
     public function getAllWidgets(): array
     {
         if ($this->_widgets !== null) {
@@ -71,13 +60,6 @@ class Widgets extends Component
         return $this->_widgets;
     }
 
-    /**
-     * Returns the widget body HTML.
-     *
-     * @param string $templatePath
-     * @param array $variables
-     * @return string
-     */
     public function getBodyHtml(string $templatePath, array $variables = []): string
     {
         $variables = array_merge($this->getAllGlobalSets(), $variables);
@@ -89,7 +71,7 @@ class Widgets extends Component
 
         try {
             $html = $view->renderTemplate($templatePath, $variables);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Craft::error('There was an error while rendering the widget. '.$e->getMessage(), __METHOD__);
             $html = '<div class="error">'.Craft::t('diy-widget', 'There was an error while rendering the widget.').'</div>';
         }
@@ -102,10 +84,6 @@ class Widgets extends Component
     // Protected Methods
     // =========================================================================
 
-    /**
-     * @param string $basePath
-     * @return array
-     */
     protected function findTemplates(string $basePath): array
     {
         $general = Craft::$app->getConfig()->getGeneral();
@@ -121,9 +99,6 @@ class Widgets extends Component
         ]);
     }
 
-    /**
-     * @return array
-     */
     protected function getAllGlobalSets(): array
     {
         if ($this->_globalSets !== null) {

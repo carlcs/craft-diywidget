@@ -18,17 +18,11 @@ class Plugin extends \craft\base\Plugin
     // Public Properties
     // =========================================================================
 
-    /**
-     * @inheritdoc
-     */
-    public $schemaVersion = '2.0.1';
+    public string $schemaVersion = '2.0.1';
 
     // Public Methods
     // =========================================================================
 
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();
@@ -38,23 +32,18 @@ class Plugin extends \craft\base\Plugin
         if (Craft::$app->getRequest()->getIsCpRequest()) {
             Craft::$app->getView()->registerAssetBundle(WidgetsAsset::class);
 
-            foreach ($widgets = $this->getWidgets()->getAllWidgets() as $widget) {
+            foreach ($this->getWidgets()->getAllWidgets() as $widget) {
                 $this->_includeWidget($widget);
             }
         }
 
         Event::on(Dashboard::class, Dashboard::EVENT_REGISTER_WIDGET_TYPES, function(RegisterComponentTypesEvent $event) {
-            foreach ($widgets = $this->getWidgets()->getAllWidgets() as $widget) {
+            foreach ($this->getWidgets()->getAllWidgets() as $widget) {
                 $event->types[] = "\\carlcs\\diywidget\\widgets\\$widget[className]";
             }
         });
     }
 
-    /**
-     * Returns the widgets service.
-     *
-     * @return Widgets
-     */
     public function getWidgets(): Widgets
     {
         return $this->get('widgets');
@@ -66,13 +55,11 @@ class Plugin extends \craft\base\Plugin
     /**
      * Evaluates dynamically generated code for a DIY widget class. The variables
      * that get injected are sanitized in getAllWidgets()
-     *
-     * @param array $widget
-     * @see \carlcs\diywidget\services\Widgets::getAllWidgets()
+     * @see Widgets::getAllWidgets()
      */
     private function _includeWidget(array $widget)
     {
-        $code = file_get_contents(__DIR__.'/widgets/diywidget.stub');
+        $code = file_get_contents(__DIR__.'/widgets/DiyWidget.php.template');
 
         $code = strtr($code, [
             '{$className}' => $widget['className'],

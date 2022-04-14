@@ -10,12 +10,12 @@ class {$className} extends BaseWidget
         return "{$displayName}";
     }
 
-    public static function icon()
+    public static function icon(): ?string
     {
         return "{$iconPath}" ?: null;
     }
 
-    public static function templatePath()
+    public static function templatePath(): ?string
     {
         return "{$templatePath}";
     }

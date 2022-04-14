@@ -1,1 +1,10 @@
-.diy-elementlist.diy-elementlist--status td{position:relative;padding-left:17px}.diy-elementlist.diy-elementlist--status td .status{position:absolute;left:0;top:calc(50% - 5px)}
+.diy-elementlist--status td {
+    position: relative;
+    padding-left: 17px;
+}
+
+.diy-elementlist--status td .status {
+    position: absolute;
+    left: 0;
+    top: calc(50% - 5px);
+}

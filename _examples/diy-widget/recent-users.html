@@ -1,11 +1,11 @@
 {% set users = craft.users()
-    .anyStatus()
+    .status(null)
     .orderBy('elements.dateCreated desc')
     .limit(10)
-    .all() %}
+    .collect() %}
 
 {% if users|length %}
-    <table class="diy-elementlist diy-elementlist--status fullwidth">
+    <table class="diy-elementlist--status fullwidth">
         {% for user in users %}
             <tr>
                 <td>
@@ -19,5 +19,5 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>{{ 'No users exist yet.'|t('site') }}</p>
+    <p class="zilch small">{{ 'No users exist yet.'|t('site') }}</p>
 {% endif %}
