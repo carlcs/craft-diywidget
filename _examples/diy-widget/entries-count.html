@@ -7,7 +7,7 @@
     'jobs',
 ] %}
 
-{% set sections = sectionHandles|map(handle => craft.app.sections.getSectionByHandle(handle))|filter %}
+{% set sections = sectionHandles|map(handle => craft.app.entries.getSectionByHandle(handle))|filter %}
 {% set stats = sections|map(section => {
     title: section.name,
     link: "entries/#{section.handle}",
