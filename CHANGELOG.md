@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.1.0 - 2024-10-25
+
+### Added
+- Added support for [Sprig](https://putyourlightson.com/plugins/sprig) functions in widget templates. You must have [`putyourlightson/craft-sprig-core`](https://github.com/putyourlightson/craft-sprig-core) or [`putyourlightson/craft-sprig`](https://github.com/putyourlightson/craft-sprig) installed separately.
+- Set the `diy-widget` template root to point to the `config/diy-widget` directory.
+
 ## 4.0.0 - 2024-02-08
 
 ### Added
