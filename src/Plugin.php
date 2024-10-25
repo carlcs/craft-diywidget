@@ -51,6 +51,10 @@ class Plugin extends \craft\base\Plugin
                 $event->roots['diy-widget'] = $basePath;
             }
         });
+
+        if (class_exists('\\putyourlightson\\sprig\\Sprig')) {
+            \putyourlightson\sprig\Sprig::bootstrap();
+        }
     }
 
     public function getWidgets(): Widgets
