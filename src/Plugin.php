@@ -37,6 +37,10 @@ class Plugin extends \craft\base\Plugin
             foreach ($this->getWidgets()->getAllWidgets() as $widget) {
                 $this->_includeWidget($widget);
             }
+
+            if (class_exists('\\putyourlightson\\sprig\\Sprig')) {
+                \putyourlightson\sprig\Sprig::bootstrap();
+            }
         }
 
         Event::on(Dashboard::class, Dashboard::EVENT_REGISTER_WIDGET_TYPES, function (RegisterComponentTypesEvent $event) {
@@ -51,10 +55,6 @@ class Plugin extends \craft\base\Plugin
                 $event->roots['diy-widget'] = $basePath;
             }
         });
-
-        if (class_exists('\\putyourlightson\\sprig\\Sprig')) {
-            \putyourlightson\sprig\Sprig::bootstrap();
-        }
     }
 
     public function getWidgets(): Widgets

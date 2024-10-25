@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.1.1 - 2024-10-25
+
+### Fixed
+- Fixed an issue where Sprig was being bootstrapped for frontend requests.
+
 ## 4.1.0 - 2024-10-25
 
 ### Added
