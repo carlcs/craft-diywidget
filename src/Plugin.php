@@ -6,7 +6,9 @@ use carlcs\diywidget\assets\WidgetsAsset;
 use carlcs\diywidget\services\Widgets;
 use Craft;
 use craft\events\RegisterComponentTypesEvent;
+use craft\events\RegisterTemplateRootsEvent;
 use craft\services\Dashboard;
+use craft\web\View;
 use yii\base\Event;
 
 /**
@@ -37,9 +39,16 @@ class Plugin extends \craft\base\Plugin
             }
         }
 
-        Event::on(Dashboard::class, Dashboard::EVENT_REGISTER_WIDGET_TYPES, function(RegisterComponentTypesEvent $event) {
+        Event::on(Dashboard::class, Dashboard::EVENT_REGISTER_WIDGET_TYPES, function (RegisterComponentTypesEvent $event) {
             foreach ($this->getWidgets()->getAllWidgets() as $widget) {
                 $event->types[] = "\\carlcs\\diywidget\\widgets\\$widget[className]";
+            }
+        });
+
+        Event::on(View::class, View::EVENT_REGISTER_CP_TEMPLATE_ROOTS, function (RegisterTemplateRootsEvent $event) {
+            $basePath = Craft::getAlias('@config/diy-widget');
+            if (is_dir($basePath)) {
+                $event->roots['diy-widget'] = $basePath;
             }
         });
     }
@@ -59,7 +68,7 @@ class Plugin extends \craft\base\Plugin
      */
     private function _includeWidget(array $widget)
     {
-        $code = file_get_contents(__DIR__.'/widgets/DiyWidget.php.template');
+        $code = file_get_contents(__DIR__ . '/widgets/DiyWidget.php.template');
 
         $code = strtr($code, [
             '{$className}' => $widget['className'],
